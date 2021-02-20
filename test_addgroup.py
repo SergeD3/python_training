@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest
+from group import Group
 
 
 class Test1(unittest.TestCase):
@@ -10,40 +11,40 @@ class Test1(unittest.TestCase):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
     
-    def test_1(self):
+    def test_add_group(self):
         wd = self.wd
         self.open_home_page(wd)
         self.login(wd, user_name="admin", password="secret")
         wd.find_element_by_link_text("groups").click()
-        self.create_group(wd, name="new group2", header="qwerty", footer="qwerty")
+        self.create_group(wd, Group(name="new group2", header="qwerty", footer="qwerty"))
         wd.find_element_by_name("submit").click()
         # submit group creation
         wd.find_element_by_link_text("group page").click()
         self.logout(wd)
 
-    def test_add_empty_goup(self):
+    def test_add_empty_group(self):
         wd = self.wd
         self.open_home_page(wd)
         self.login(wd, user_name="admin", password="secret")
         wd.find_element_by_link_text("groups").click()
-        self.create_group(wd, name="", header="", footer="")
+        self.create_group(wd, Group(name="", header="", footer=""))
         wd.find_element_by_name("submit").click()
         # submit group creation
         wd.find_element_by_link_text("group page").click()
         self.logout(wd)
 
-    def create_group(self, wd, name, header, footer):
+    def create_group(self, wd, group):
         # create new group
         wd.find_element_by_name("new").click()
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys(name)
+        wd.find_element_by_name("group_name").send_keys(group.name)
         wd.find_element_by_name("group_header").click()
         wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys(header)
+        wd.find_element_by_name("group_header").send_keys(group.header)
         wd.find_element_by_name("group_footer").click()
         wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys(footer)
+        wd.find_element_by_name("group_footer").send_keys(group.footer)
 
     def logout(self, wd):
         # logout
