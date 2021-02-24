@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest
-from group import Add_contact
+from group import AddContact2
 
 
 class AddContact(unittest.TestCase):
@@ -17,7 +17,7 @@ class AddContact(unittest.TestCase):
         self.open_homepage(wd)
         self.login(wd, username="admin", password="secret")
         self.open_add_contact(wd)
-        self.fill_contact_form(wd, Add_contact(middle_name="middle name 1", first_name="name 1", last_name="last name 1", user_nick="nick 1", user_title="title 1", user_company="wrum",
+        self.fill_contact_form(wd, AddContact2(middle_name="middle name 1", first_name="name 1", last_name="last name 1", user_nick="nick 1", user_title="title 1", user_company="wrum",
                                user_adress="lazer 5, Moscow", user_home="784763587643", user_mob="746358746357", user_email="weuyrt@iwer.ri", user_bday="17", user_bmonth="October",
                                user_byear="1980", user_group="new group2", user_addr2="lazer 5, Russian Federation", user_phone2="rgegregreg", user_note="notes from user"))
         self.contact_lv(wd)

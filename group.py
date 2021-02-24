@@ -6,7 +6,7 @@ class Group:
         self.footer = footer
 
 
-class Add_contact:
+class AddContact2:
 
     def __init__(self, middle_name, first_name, last_name, user_nick, user_title, user_company, user_adress, user_home,
                  user_mob, user_email, user_bday, user_bmonth, user_byear, user_group, user_addr2, user_phone2,
