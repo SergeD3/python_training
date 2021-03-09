@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest
-from group import AddContact2
+from model.group import AddContact2
 
 
 class AddContact(unittest.TestCase):
