@@ -14,6 +14,7 @@ class Application:
     def create_group(self, group):
         # create new group
         wd = self.wd
+        self.open_group_page()
         wd.find_element_by_name("new").click()
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
@@ -25,6 +26,7 @@ class Application:
         wd.find_element_by_name("group_footer").clear()
         wd.find_element_by_name("group_footer").send_keys(group.footer)
         wd.find_element_by_name("submit").click()
+        wd.find_element_by_xpath("/html/body/div/div[4]/div/i/a").click()
 
     def logout(self):
         # logout
