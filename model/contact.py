@@ -1,4 +1,5 @@
 from selenium.webdriver.support.ui import Select
+import time
 
 
 class ContactHelper:
@@ -54,9 +55,9 @@ class ContactHelper:
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys(group.user_byear)
-        wd.find_element_by_name("new_group").click()
-        Select(wd.find_element_by_name("new_group")).select_by_visible_text(group.user_group)
-        wd.find_element_by_xpath("(//option[@value='10'])[3]").click()
+        # wd.find_element_by_name("new_group").click()
+        # Select(wd.find_element_by_name("new_group")).select_by_visible_text(group.user_group)
+        # wd.find_element_by_xpath("(//option[@value='10'])[3]").click()
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
         wd.find_element_by_name("address2").send_keys(group.user_addr2)
@@ -67,7 +68,8 @@ class ContactHelper:
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(group.user_note)
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
-        self.app.wd.return_to_contact()
+        self.return_to_contact()
+        time.sleep(5)
 
     def return_to_contact(self):
         # переходим на форму списка контактов - убеждаемся, что контакт создался

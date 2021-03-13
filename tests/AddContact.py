@@ -13,7 +13,7 @@ def app(request):
 
 def test_add_contact(app):
     app.session.login(user_name="admin", password="secret")
-    app.group.fill_contact_form(AddContact2(
+    app.contact.fill_contact_form(AddContact2(
         middle_name="middle name 1",
         first_name="name 1",
         last_name="last name 1",
